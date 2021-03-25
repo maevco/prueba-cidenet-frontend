@@ -1,0 +1,170 @@
+<div class="container col-md-6">
+    <div class="card">
+        <div class="card-header">
+            <h3>Editar Empleados</h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="miFormulario" novalidate="">
+                <div class="form-group">
+                    <label for="">Primer Apellido:</label>
+                    <!--<input [(ngModel)]="empleado.primerApellido" name="primerApellido" type="text" class="form-control">-->
+                    <input class="form-control" type="text" formControlName="primerApellido"
+                        [ngClass]="{'is-invalid': !miFormulario.get('primerApellido').valid}">
+                    <div *ngIf="miFormulario.controls['primerApellido'].errors?.required" class="invalid-feedback">
+                        El primer apoellido es necesario
+                    </div>
+                    <div *ngIf="miFormulario.controls['primerApellido'].errors?.minlength" class="invalid-feedback">
+                        Por lo menos 3 caracteres
+                    </div>
+                    <div *ngIf="miFormulario.controls['primerApellido'].errors?.maxlength" class="invalid-feedback">
+                        Maximo 20 caracteres
+                    </div>
+                    <div *ngIf="miFormulario.controls['primerApellido'].errors?.pattern" class="invalid-feedback">
+                        Solo letras mayúscula, sin acentos ni Ñ
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Segundo Apellido:</label>
+                    <!--<input [(ngModel)]="empleado.segundoApellido" name="segundoApellido" type="text" class="form-control">-->
+                    <input class="form-control" type="text" formControlName="segundoApellido"
+                        [ngClass]="{'is-invalid': !miFormulario.get('segundoApellido').valid}">
+                    <div *ngIf="miFormulario.controls['segundoApellido'].errors?.required" class="invalid-feedback">
+                        El segundo apellido es necesario
+                    </div>
+                    <div *ngIf="miFormulario.controls['segundoApellido'].errors?.minlength" class="invalid-feedback">
+                        Por lo menos 3 caracteres
+                    </div>
+                    <div *ngIf="miFormulario.controls['segundoApellido'].errors?.maxlength" class="invalid-feedback">
+                        Maximo 20 caracteres
+                    </div>
+                    <div *ngIf="miFormulario.controls['segundoApellido'].errors?.pattern" class="invalid-feedback">
+                        Solo letras mayúscula, sin acentos ni Ñ
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Primer Nombre:</label>
+                    <!--<input [(ngModel)]="empleado.primerNombre" name="primerNombre" type="text" class="form-control">-->
+                    <input class="form-control" type="text" formControlName="primerNombre"
+                        [ngClass]="{'is-invalid': !miFormulario.get('primerNombre').valid}">
+                    <div *ngIf="miFormulario.controls['primerNombre'].errors?.required" class="invalid-feedback">
+                        El segundo apellido es necesario
+                    </div>
+                    <div *ngIf="miFormulario.controls['primerNombre'].errors?.minlength" class="invalid-feedback">
+                        Por lo menos 3 caracteres
+                    </div>
+                    <div *ngIf="miFormulario.controls['primerNombre'].errors?.maxlength" class="invalid-feedback">
+                        Maximo 20 caracteres
+                    </div>
+                    <div *ngIf="miFormulario.controls['primerNombre'].errors?.pattern" class="invalid-feedback">
+                        Solo letras mayúscula, sin acentos ni Ñ
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Otros Nombres:</label>
+                    <!--<input [(ngModel)]="empleado.otrosNombres" name="otrosNombres" type="text" class="form-control">-->
+                    <input class="form-control" type="text" formControlName="otrosNombres"
+                        [ngClass]="{'is-invalid': !miFormulario.get('otrosNombres').valid}">
+                    <div *ngIf="miFormulario.controls['otrosNombres'].errors?.pattern" class="invalid-feedback">
+                        Solo letras mayúscula, sin acentos ni Ñ
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Pais:</label>
+                    <br>
+                    <mat-form-field class="form-element" hintLabel="Seleccionar una opcion"
+                        [ngClass]="{'is-invalid': !miFormulario.get('pais').valid}">
+                        <mat-select formControlName="pais" name="pais">
+                            <mat-option *ngFor="let pais of paises" [value]="pais.descripcion"> {{ pais.descripcion }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div *ngIf="miFormulario.controls['pais'].errors?.required" class="invalid-feedback">
+                        El pais es necesario
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Tipo Identificacion:</label>
+                    <br>
+                    <mat-form-field class="form-element" hintLabel="Seleccionar una opcion"
+                        [ngClass]="{'is-invalid': !miFormulario.get('tipoIdentificacion').valid}">
+                        <mat-select formControlName="tipoIdentificacion" name="tipoIdentificacion">
+                            <mat-option *ngFor="let tipoIdentificacion of tipoIdentificaciones"
+                                [value]="tipoIdentificacion.descripcion"> {{ tipoIdentificacion.descripcion }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div *ngIf="miFormulario.controls['tipoIdentificacion'].errors?.required" class="invalid-feedback">
+                        El tipo de identificacion es necesario
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Numero Identificacion:</label>
+                    <input class="form-control" type="text" formControlName="numeroIdentificacion"
+                        [ngClass]="{'is-invalid': !miFormulario.get('numeroIdentificacion').valid}">
+                    <div *ngIf="miFormulario.controls['numeroIdentificacion'].errors?.required"
+                        class="invalid-feedback">
+                        El segundo apellido es necesario
+                    </div>
+                    <div *ngIf="miFormulario.controls['numeroIdentificacion'].errors?.minlength"
+                        class="invalid-feedback">
+                        Por lo menos 3 caracteres
+                    </div>
+                    <div *ngIf="miFormulario.controls['numeroIdentificacion'].errors?.maxlength"
+                        class="invalid-feedback">
+                        Maximo 20 caracteres
+                    </div>
+                    <div *ngIf="miFormulario.controls['numeroIdentificacion'].errors?.pattern" class="invalid-feedback">
+                        Solo numeros y letras
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Fecha Ingreso:</label>
+                    <br>
+                    <mat-form-field appearance="fill"
+                        [ngClass]="{'is-invalid': !miFormulario.get('fechaIngreso').valid}">
+                        <mat-label>Seleccione una fecha</mat-label>
+                        <input matInput [matDatepicker]="fechaIngreso" formControlName="fechaIngreso" [max]="date"
+                            [min]="maxDate">
+                        <mat-datepicker-toggle matSuffix [for]="fechaIngreso"></mat-datepicker-toggle>
+                        <mat-datepicker #fechaIngreso></mat-datepicker>
+                    </mat-form-field>
+                    <div *ngIf="miFormulario.controls['fechaIngreso'].errors?.required" class="invalid-feedback">
+                        La fecha de ingreso es necesario
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Area:</label>
+                    <br>
+                    <mat-form-field class="form-element" hintLabel="Seleccionar una opcion"
+                        [ngClass]="{'is-invalid': !miFormulario.get('fechaIngreso').valid}">
+                        <mat-select formControlName="area" name="area">
+                            <mat-option *ngFor="let area of areas" [value]="area.descripcion"> {{ area.descripcion }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div *ngIf="miFormulario.controls['tipoIdentificacion'].errors?.required" class="invalid-feedback">
+                        El area es necesario
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Estado:</label>
+                    <input class="form-control" type="text" formControlName="estado"
+                        [ngClass]="{'is-invalid': !miFormulario.get('estado').valid}" readonly="true">
+                    <div *ngIf="miFormulario.controls['estado'].errors?.required" class="invalid-feedback">
+                        El estado es necesario
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="">Fecha Registro:</label>
+                    <input class="form-control" type="text" formControlName="fechaRegistro"
+                        [ngClass]="{'is-invalid': !miFormulario.get('fechaRegistro').valid}" readonly="true">
+                    <div *ngIf="miFormulario.controls['fechaRegistro'].errors?.required" class="invalid-feedback">
+                        El estado es necesario
+                    </div>
+                </div>
+                <br>
+                <button (click)="actualizarEmpleado(empleado)" class="btn btn-danger">Actualizar</button>
+            </form>
+        </div>
+    </div>
+</div>
